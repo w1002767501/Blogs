@@ -12,17 +12,11 @@
           <el-input v-model="form.username"></el-input>
         </el-form-item>
         <el-form-item label="密码：" prop="password">
-          <el-input
-            type="password"
-            v-model="form.password"
-            autocomplete="off"
-          ></el-input>
+          <el-input type="password" v-model="form.password" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item class="button">
           <el-button @click="submitForm1('form')">注册</el-button>
-          <el-button type="primary" @click="submitForm2('form')"
-            >登陆</el-button
-          >
+          <el-button type="primary" @click="submitForm2('form')">登陆</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -100,7 +94,7 @@ export default {
           login(apiData).then((res) => {
             console.log(res.data)
             if (res.data === false) {
-              this.$message.error('抱歉，该账号已被注册')
+              this.$message.error('账号或密码错误，请重新输入！')
               this.form.username = ''
               this.form.password = null
             } else {
@@ -129,23 +123,21 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('../assets/images/bg.png');
+  background-image: url("../assets/images/bg.png");
   display: flex;
   align-items: center;
   background-size: cover;
   .bg-home {
     box-sizing: border-box;
-    padding: 5% 2%;
-    width: 40%;
-    height: 50%;
+    padding: 5% 5%;
+    width: 30%;
+    // height: 50%;
     margin: auto;
     background: rgba($color: #fff, $alpha: 0.6);
     border-radius: 15px;
     .el-form-item {
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       .el-form-item__label {
-        // border: 1px solid;
-        // background: #fff;
         font-size: 18px;
       }
       .el-button {
@@ -153,8 +145,11 @@ export default {
         width: 30%;
       }
     }
-    .el-form-item__content {
-      text-align: right;
+    .el-form-item.button {
+      .el-form-item__content {
+        text-align: right;
+        margin: 0 !important;
+      }
     }
   }
 }
